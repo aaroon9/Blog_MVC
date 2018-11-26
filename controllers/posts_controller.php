@@ -16,17 +16,16 @@
 		 $post = Post::find($_GET['id']);
 		 require_once('views/posts/show.php');
 		 }
+
 		 public function mostrarInsertar(Type $var = null){
 		 	//NO modelo
 
 		 	//VISTA
-		 	require_once('views/posts/mostrarInsertar.php');
+		 	require_once('views/insertar/mostrarInsertar.php');
 		 }
-		 public function Insertar(Type $var = null){
-		 	//id =$_POST['id'];
-		 	//....
-
-		 	//Post::insert();
+		 public function insertar(){
+		 	
+		 	Post::insertarBD();
 
 		 	//header (Location:'?cotron=post&action=mostrarInsertar');
 		 }
