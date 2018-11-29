@@ -80,9 +80,14 @@
 	 	$titulo=htmlspecialchars(strip_tags($_POST['titulo']));
 	 	$content=htmlspecialchars(strip_tags($_POST['desc']));
 	 	$image=htmlspecialchars(strip_tags($_FILES["image"]["name"]));
-	 	$image=!empty($_FILES["image"]["name"])? sha1_file($_FILES['image']['tmp_name']) . "-" . basename($_FILES["image"]["name"]) : "";
 	 	
-        $timestamp = date('Y-m-d H:i:s');
+	 	
+        if ($_FILES["image"]["name"] == "") {
+        	$image = $_POST['image1'];
+        }
+        else{
+        	$image=!empty($_FILES["image"]["name"])? sha1_file($_FILES['image']['tmp_name']) . "-" . basename($_FILES["image"]["name"]) : "";
+        }
 
 	 	$req->bindParam(":author", $author);
 	 	$req->bindParam(":titulo", $titulo);
@@ -92,17 +97,28 @@
 	 	$req->bindParam(":id", $_GET['id']);
 
 	 	if($req->execute()){
-	 		
-	 		echo $image;
-	 		if ($image != "") {
-	 			Post::uploadPhoto($image);
-	 		}
+	 		Post::uploadPhoto($image);
             return true;
         }else{
             return false;
         }
 
 	}
+	public static function eliminarBD(){
+		$db = Db::getInstance();
+		$req = $db->prepare('DELETE FROM posts 
+            WHERE id=:id');
+
+		$req->bindParam(":id", $_GET['id']);
+
+		if($req->execute()){
+            return true;
+        }else{
+            return false;
+        }
+
+	}
+
 	public static function uploadPhoto($image){
  
 		    $result_message="";
@@ -117,13 +133,7 @@
 		 
 	    // error message is empty
 	    $file_upload_error_messages="";
-	    // make sure that file is a real image
-		$check = getimagesize($_FILES["image"]["tmp_name"]);
-			if($check!==false){
-			    // submitted file is an image
-			}else{
-			    $file_upload_error_messages.="<div>Submitted file is not an image.</div>";
-			}
+
 		 
 		// make sure certain file types are allowed
 		$allowed_file_types=array("jpg", "jpeg", "png", "gif");

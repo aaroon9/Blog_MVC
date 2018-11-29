@@ -22,7 +22,7 @@
         <tr>
             <td>Foto Actual</td>
             <td>
-                <input type="hidden" name="image1" value="$post->image">
+                <input type="hidden" name="image1" value="<?php echo $post->image;?>">
                 <?php echo $post->image? "<img src='uploads/{$post->image}' style='width:250px;' />" : "No image found."; ?>
             </td>
         </tr>
