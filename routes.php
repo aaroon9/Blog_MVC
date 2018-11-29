@@ -13,7 +13,7 @@
 			 case 'coches':
 			 // necesitamos el modelo para después consultar a la BBDD desde el controlador
 			 require_once('models/coche.php');
-			 $controller = new PostsController();
+			 $controller = new CochesController();
 			 break;
 			 }
 			 $controller->{ $action }();
@@ -21,9 +21,9 @@
 			// agregando una entrada para el nuevo controlador y sus acciones.
 			$controllers = array( 'pages' => ['home', 'error'],
 			 					  'posts' => ['index', 'show','mostrarInsertar','insertar','mostrarModificar','modificar','eliminar'],
-			 					  'coches' => ['index', 'readOne', 'crearCoche', 'crearCocheBD', 'modificarCoche', 'modificarCocheBD', 'eliminarCoche']
+			 					  'coches' => ['index', 'mostrarUno', 'crearCoche', 'crearCocheBD', 'modificarCoche', 'modificarCocheBD', 'eliminarCoche']
 			);
-			
+
 			if (array_key_exists($controller, $controllers)) {
 			 	if (in_array($action, $controllers[$controller])) {
 			 		call($controller, $action);

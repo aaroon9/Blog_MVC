@@ -4,7 +4,7 @@
 		public $marca;
 		public $modelo;
 		public $puertas;
-		public $creted;
+		public $created;
 
 		public function __construct($bastidor, $marca, $modelo, $puertas, $created){
 
@@ -27,15 +27,15 @@
 		}
 
 		public static function readOne($bastidor) {
-		 $db = Db::getInstance();
-		 // nos aseguramos que $id es un entero
-		 $id = intval($bastidor);
-		 $req = $db->prepare('SELECT * FROM coches WHERE bastidor = :bastidor');
-		 // preparamos la sentencia y reemplazamos :bastidor con el valor de $bastidor
-		 $req->execute(array('bastidor' => $bastidor));
-		 $post = $req->fetch();
+			$db = Db::getInstance();
+			// nos aseguramos que $id es un entero
+			$id = intval($bastidor);
+			$req = $db->prepare('SELECT * FROM coches WHERE bastidor = :bastidor');
+			// preparamos la sentencia y reemplazamos :bastidor con el valor de $bastidor
+			$req->execute(array('bastidor' => $bastidor));
+			$coche = $req->fetch();
 
-	 	return new Coche($coche['bastidor'], $coche['marca'], $coche['modelo'], $coche['puertas'], $coche['created']);
+		 return new Coche($coche['bastidor'], $coche['marca'], $coche['modelo'], $coche['puertas'], $coche['created']);
 	 	}
 
 	}
