@@ -15,7 +15,7 @@
 		}
 			// agregando una entrada para el nuevo controlador y sus acciones.
 			$controllers = array( 'pages' => ['home', 'error'],
-			 					  'posts' => ['index', 'show','mostrarInsertar','insertar','modificar','eliminar']
+			 					  'posts' => ['index', 'show','mostrarInsertar','insertar','mostrarModificar','modificar','eliminar']
 			);
 			if (array_key_exists($controller, $controllers)) {
 			 if (in_array($action, $controllers[$controller])) {
