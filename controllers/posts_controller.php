@@ -32,8 +32,7 @@
 		 	}
 		 	//header (Location:'?cotron=post&action=mostrarInsertar');
 		 }
-		 public function mostrarModificar(){
-
+		 public function mostrarModificar($id){
 			 if (!isset($id)) {
 			 	return call('pages', 'error', null);
 			 }else{
@@ -55,8 +54,8 @@
 		 	}
 
 		 }
-		 public function eliminar(){
-		 	if(Post::eliminarBD() == true){
+		 public function eliminar($id){
+		 	if(Post::eliminarBD($id) == true){
 		 		$posts = Post::all();
 		 		echo "<div class='alert alert-success'>Post eliminado correctamente.</div>";
 		 		require_once('views/posts/index.php');

@@ -105,7 +105,8 @@
         }
 
 	}
-	public static function eliminarBD(){
+	public static function eliminarBD($id){
+		
 		$db = Db::getInstance();
 		$req = $db->prepare('DELETE FROM posts 
             WHERE id=:id');
