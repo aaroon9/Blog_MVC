@@ -1,5 +1,5 @@
 <?php
-		function call($controller, $action) {
+		function call($controller, $action, $param) {
 			 require_once('controllers/' . $controller . '_controller.php');
 			 switch($controller) {
 			 case 'pages':
@@ -16,7 +16,7 @@
 			 $controller = new CochesController();
 			 break;
 			 }
-			 $controller->{ $action }();
+			 $controller->{ $action }($param);
 		}
 			// agregando una entrada para el nuevo controlador y sus acciones.
 			$controllers = array( 'pages' => ['home', 'error'],
@@ -26,11 +26,11 @@
 
 			if (array_key_exists($controller, $controllers)) {
 			 	if (in_array($action, $controllers[$controller])) {
-			 		call($controller, $action);
+			 		call($controller, $action, $param);
 			 	} else {
-			 		call('pages', 'error');
+			 		call('pages', 'error', null);
 			 	}
 			} else {
-			 call('pages', 'error');
+			 call('pages', 'error', null);
 		}
 ?>

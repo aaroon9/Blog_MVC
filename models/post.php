@@ -80,6 +80,7 @@
 	 	$titulo=htmlspecialchars(strip_tags($_POST['titulo']));
 	 	$content=htmlspecialchars(strip_tags($_POST['desc']));
 	 	$image=htmlspecialchars(strip_tags($_FILES["image"]["name"]));
+	 	$id=htmlspecialchars(strip_tags($_POST['id']));
 	 	
 	 	
         if ($_FILES["image"]["name"] == "") {
@@ -94,7 +95,7 @@
 	 	$req->bindParam(":content", $content);
 	 	$req->bindParam(":image", $image);
 	 	$req->bindParam(":created", $timestamp);
-	 	$req->bindParam(":id", $_GET['id']);
+	 	$req->bindParam(":id", $id);
 
 	 	if($req->execute()){
 	 		Post::uploadPhoto($image);
@@ -109,7 +110,7 @@
 		$req = $db->prepare('DELETE FROM posts 
             WHERE id=:id');
 
-		$req->bindParam(":id", $_GET['id']);
+		$req->bindParam(":id", $id);
 
 		if($req->execute()){
             return true;

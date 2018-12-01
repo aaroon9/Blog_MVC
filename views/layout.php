@@ -4,10 +4,10 @@
 		 </head>
 		 <body>
 			 <header>
-			 <a href='/bloc_php_mvc'>Home</a>
-			 <a href='?controller=posts&action=index'>Posts</a>
-			 <a href='?controller=posts&action=mostrarInsertar'>Crear Post</a>
-			 <a href='?controller=coches&action=index'>Coches</a>
+			 <a href="<?php echo constant('URL'); ?>">Home</a>
+			 <a href="<?php echo constant('URL'); ?>posts/index">Posts</a>
+			 <a href="<?php echo constant('URL'); ?>posts/mostrarInsertar">Crear Post</a>
+			 <a href="<?php echo constant('URL'); ?>coches/index">Coches</a>
 			 </header>
 
 		 	<?php require_once('routes.php'); ?>

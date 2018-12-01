@@ -1,8 +1,9 @@
-<form action="?controller=posts&action=modificar&id=<?php echo $post->id; ?>" method="post" enctype="multipart/form-data"> 
+<form action="<?php echo constant('URL') ?>posts/modificar" method="post" enctype="multipart/form-data"> 
     <table class='table table-hover table-responsive table-bordered'>
         <tr>
             <td>ID</td>
             <td><?php echo $post->id; ?></td>
+            <td> <input type="hidden" name="id" value="<?php echo $post->id; ?>"></td>
         </tr>
  
         <tr>
