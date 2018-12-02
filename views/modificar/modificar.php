@@ -24,7 +24,7 @@
             <td>Foto Actual</td>
             <td>
                 <input type="hidden" name="image1" value="<?php echo $post->image;?>">
-                <?php echo $post->image? "<img src='uploads/{$post->image}' style='width:250px;' />" : "No image found."; ?>
+                <img style="max-height: 300px" class="img-fluid rounded maxHeight" src="<?php echo constant('URL')."uploads/".$post->image; ?>">
             </td>
         </tr>
  
