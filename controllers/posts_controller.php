@@ -63,7 +63,6 @@
 		 		$posts = Post::all();
 		 		echo "<div class='alert alert-success'>Imposible eliminar el post</div>";
 		 		require_once('views/posts/index.php');
-
 		 	}
 		 }
 }

@@ -15,6 +15,55 @@
 			$coche = Coche::readOne($bastidor);
 			require_once('views/coche/readOne.php');
 		}
-	}
 
+		public function crearCoche(){
+			require_once('views/coche/vistaCrear.php');
+
+		}
+
+		public function insertarCoche(){
+			if (Coche::crearCocheBD() == true) {
+				echo "<div class='alert alert-success'>Coche creado correctamente.</div>";
+				require_once('views/coche/vistaCrear.php');
+			 } else{
+			 	echo "<div class='alert alert-danger'>Yeeee ande ibas? Coche no creado.</div>";
+			 	require_once('views/coche/vistaCrear.php');
+			 }
+		}
+
+		 public function modificarCoche($bastidor){
+		 	if (!isset($bastidor)) {
+			 	return call('pages', 'error', null);
+			 }else{
+			 	$coche = Coche::readOne($bastidor);
+			 	require_once('views/coche/mostrarModificar.php');
+			 }
+
+		 }
+
+		 public function modificarCocheBD(){
+		 	if(Coche::modificarCocheBD()== true){
+		 		$coches = Coche::todos();
+		 		echo "<div class='alert alert-success'Coche actualizado correctamente.</div>";
+		 		require_once('views/coche/index.php');
+		 	}
+		 	else{
+		 		$coches = Coche::todos();
+		 		echo "<div class='alert alert-danger'>Yeeee ande ibas? Coche no actualizado.</div>";
+		 		require_once('views/coche/index.php');
+		 	}
+		 }
+
+		 public function eliminarCoche($bastidor){
+		 	if(Coche::eliminarBD($bastidor) == true){
+		 		$coches = Coche::todos();
+		 		echo "<div class='alert alert-success'>Coche eliminado correctamente.</div>";
+		 		require_once('views/coche/index.php');
+		 	}else{
+		 		$coches = Coche::todos();
+		 		echo "<div class='alert alert-success'>Imposible eliminar el coche</div>";
+		 		require_once('views/coche/index.php');
+		 	}
+		}
+	}
  ?>

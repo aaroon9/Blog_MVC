@@ -1,11 +1,33 @@
 
-<p><strong>Bastidor #<?php echo $coche->bastidor; ?></strong></p>
-<p><strong>Marca: </strong><?php echo $coche->marca; ?></p>
-<p><strong>Modelo: </strong><?php echo $coche->modelo; ?></p>
-<p><strong>Puertas: </strong><?php echo $coche->puertas; ?></p>
-<!-- La forma en que PHP muestra la fecha es en el formato americano Y/m/d para que nos resulte mas amigable cambiamos el formato con la funcion strftime-->
-<?php 
+
+<table class="table">
+	<tr>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>Bastidor:</td>
+		<td><?php echo $coche->bastidor; ?></td>
+	</tr>
+	<tr>
+		<td>Marca:</td>
+		<td><?php echo $coche->marca; ?></td>
+	</tr>
+	<tr>
+		<td>Modelo:</td>
+		<td><?php echo $coche->modelo; ?></td>
+	</tr>
+	<tr>
+		<td>Puertas:</td>
+		<td><?php echo $coche->puertas; ?></td>
+	</tr>
+	<tr>
+		<!-- La forma en que PHP muestra la fecha es en el formato americano Y/m/d para que nos resulte mas amigable cambiamos el formato con la funcion strftime-->
+	<?php 
 		$fecha = strtotime($coche->created);
 		$fechaB = strftime("%d/%m/%Y" , $fecha);
-?>
-<p><strong>Creado: </strong><?php echo $fechaB; ?></p>
+	?>
+		<td>Creado:</td>
+		<td><?php echo $fechaB; ?></td>
+	</tr>
+

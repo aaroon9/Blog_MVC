@@ -1,9 +1,19 @@
 <p><strong>Listado de los coches:</strong></p>
+
+<table class="table">
+	<tr>
+		<th>Bastidor</th>
+		<th>Opciones</th>
+	</tr>
 	<?php foreach($coches as $coche) { ?>
-	 <p>
-	 <?php echo $coche->bastidor; ?>
-	 <a href="<?php echo constant('URL'); ?>coches/mostrarUno/<?php echo $coche->bastidor; ?>">Ver contenido</a>
-	 <!--<a href='?controller=posts&action=mostrarModificar&id=<?php echo $post->id; ?>'>Modificar Coche</a>
-	 <a href='?controller=posts&action=eliminar&id=<?php echo $post->id; ?>'>Eliminar Coche</a>-->
-	 </p>
+	 
+	 <tr>
+	 	<td><?php echo $coche->bastidor; ?></td>
+	 	<td>
+	 		<a href="<?php echo constant('URL'); ?>coches/mostrarUno/<?php echo $coche->bastidor; ?>" class="btn btn-primary">Ver contenido</a>
+	 		<a href="<?php echo constant('URL'); ?>coches/modificarCoche/<?php echo $coche->bastidor; ?>" class="btn btn-warning">Modificar Coche</a>
+	 		<a href="<?php echo constant('URL'); ?>coches/eliminarCoche/<?php echo $coche->bastidor; ?>" class="btn btn-danger">Eliminar Coche</a>
+	 	</td>
+	 </tr>
+	 
 <?php } ?>

@@ -38,6 +38,70 @@
 		 return new Coche($coche['bastidor'], $coche['marca'], $coche['modelo'], $coche['puertas'], $coche['created']);
 	 	}
 
-	}
+	 	public static function crearCocheBD(){
 
- ?>
+	 		$db = Db::getInstance();
+	 	$req = $db->prepare('INSERT INTO  coches 
+            SET bastidor=:bastidor, marca=:marca, modelo=:modelo,
+                 puertas=:puertas, created=:created');
+	 	$bastidor=htmlspecialchars(strip_tags($_POST['bastidor']));
+	 	$marca=htmlspecialchars(strip_tags($_POST['marca']));
+	 	$modelo=htmlspecialchars(strip_tags($_POST['modelo']));
+	 	$puertas=htmlspecialchars(strip_tags($_POST["puertas"]));
+	 	
+
+        $timestamp = date('Y-m-d H:i:s');
+
+	 	$req->bindParam(":bastidor", $bastidor);
+	 	$req->bindParam(":marca", $marca);
+	 	$req->bindParam(":modelo", $modelo);
+	 	$req->bindParam(":puertas", $puertas);
+	 	$req->bindParam(":created", $timestamp);
+
+	 	if($req->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        
+	 	}
+
+	 	public static function modificarCocheBD(){
+
+		 		$db = Db::getInstance();
+		 	$req = $db->prepare('UPDATE  coches 
+	            SET marca=:marca, modelo=:modelo, puertas=:puertas WHERE bastidor=:bastidor');
+		 	
+		 	$marca=htmlspecialchars(strip_tags($_POST['marca']));
+		 	$modelo=htmlspecialchars(strip_tags($_POST['modelo']));
+		 	$puertas=htmlspecialchars(strip_tags($_POST['puertas']));
+		 	$bastidor=htmlspecialchars(strip_tags($_POST['bastidor']));
+
+		 	$req->bindParam(":marca", $marca);
+		 	$req->bindParam(":modelo", $modelo);
+		 	$req->bindParam(":puertas", $puertas);
+		 	$req->bindParam(":bastidor", $bastidor);
+
+		 	if($req->execute()){
+	            return true;
+	        }else{
+	            return false;
+	        }
+	 	}
+
+	 	public static function eliminarBD($bastidor){
+	 		$db = Db::getInstance();
+			$req = $db->prepare('DELETE FROM coches 
+	            WHERE bastidor=:bastidor');
+
+			$req->bindParam(":bastidor", $bastidor);
+
+			if($req->execute()){
+	            return true;
+	        }else{
+	            return false;
+	        }
+	 	}
+
+	}
+?>
