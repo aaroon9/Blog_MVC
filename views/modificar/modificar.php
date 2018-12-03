@@ -1,3 +1,6 @@
+
+<!--Declaracion de tabla con su redireccion mediante una URL amigable. Tabla declarada para la vista de modificar post-->
+
 <form action="<?php echo constant('URL') ?>posts/modificar" method="post" enctype="multipart/form-data"> 
     <table class='table table-hover table-responsive table-bordered'>
         <tr>

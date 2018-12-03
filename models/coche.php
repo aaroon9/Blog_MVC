@@ -1,11 +1,12 @@
 <?php 
+	//Delcaracion del objeto coche.
 	class Coche{
 		public $bastidor;
 		public $marca;
 		public $modelo;
 		public $puertas;
 		public $created;
-
+		//constructor de coche con todas sus variables.
 		public function __construct($bastidor, $marca, $modelo, $puertas, $created){
 
 			$this->bastidor = $bastidor;
@@ -14,6 +15,7 @@
 			$this->puertas = $puertas;
 			$this->created = $created;
 		}
+		//funcon que permite buscar todos los coches en la BBDD
 		public function todos(){
 			$lista = [];
 			 $db = Db::getInstance();
@@ -25,7 +27,7 @@
 			}
 			 return $list;
 		}
-
+		//funcion que permite buscar un coche en concreto en la BBDD mediante la variable $bastidor.
 		public static function readOne($bastidor) {
 			$db = Db::getInstance();
 			// nos aseguramos que $id es un entero
@@ -37,7 +39,7 @@
 
 		 return new Coche($coche['bastidor'], $coche['marca'], $coche['modelo'], $coche['puertas'], $coche['created']);
 	 	}
-
+	 	//funcion que crea una nueva fila dentro de la tabla coches. El formulario crearcCoche llega aqui donde todos los datos se guardan en variables y se insertan en la BBDD.
 	 	public static function crearCocheBD(){
 
 	 		$db = Db::getInstance();
@@ -65,7 +67,7 @@
         }
         
 	 	}
-
+	 	//funcion que recoje los datos del fomulario modificar coche y los guarda en una variable donde se introducen en la BBDD.
 	 	public static function modificarCocheBD(){
 
 		 		$db = Db::getInstance();
@@ -88,7 +90,7 @@
 	            return false;
 	        }
 	 	}
-
+	 	//funcion que permite eliminar un coche de la base de datos.
 	 	public static function eliminarBD($bastidor){
 	 		$db = Db::getInstance();
 			$req = $db->prepare('DELETE FROM coches 

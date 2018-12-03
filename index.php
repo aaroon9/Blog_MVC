@@ -1,5 +1,6 @@
 <?php
  	require_once('connection.php');
+ 	//Declaro constante que tomara la URL para poder formar las URL amigables.
 
  	define('URL', 'http://localhost/bloc_php_mvc/');
 

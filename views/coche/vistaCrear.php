@@ -1,4 +1,5 @@
 
+<!--Declaracion de un formulario para poder crear un coche en la BBDD con su redireccion mediante URL amigable-->
 <form action="<?php echo constant('URL'); ?>coches/insertarCoche" method="post" enctype="multipart/form-data"> 
     <table class='table table-hover table-responsive table-bordered'>
  

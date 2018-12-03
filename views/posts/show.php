@@ -1,4 +1,5 @@
 
+<!--Declaracion de tabla para asi dar formato a la vista de un solo post-->
 <table class="table">
 	<tr>
 		<th></th>

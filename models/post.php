@@ -1,4 +1,5 @@
 <?php
+//Delcaracion del objeto Post
 	class Post {
 	 // definimos tres atributos
 	 // los declaramos como públicos para acceder directamente $post->author
@@ -7,7 +8,7 @@
 	 public $author;
 	 public $content;
 	 public $image;
-
+	 //contructor del objeto post
 	 public function __construct($id, $titulo, $author, $content, $image) {
 
 	 $this->id = $id;
@@ -16,7 +17,7 @@
 	 $this->content = $content;
 	 $this->image = $image;
 	 }
-
+	 //funcion para buscar todos los post en la BBDD
 	 public static function all() {
 		 $list = [];
 		 $db = Db::getInstance();
@@ -28,7 +29,7 @@
 		}
 		 return $list;
 	 }
-
+	 //Funcion para buscar un post en concreto al cambiar a URL amigabel no sirve los GET y tenemos que paras el id como variable.
 	 public static function find($id) {
 		 $db = Db::getInstance();
 		 // nos aseguramos que $id es un entero
@@ -39,7 +40,7 @@
 		 $post = $req->fetch();
 	 	return new Post($post['id'], $post['titulo'], $post['author'], $post['content'], $post['image']);
 	 }
-
+	 //los datos del fomulario inserta llegar a esta funcion donde se guardan en variables y se insertan el la BBDD
 	 public static function insertarBD(){
 
 	 	$db = Db::getInstance();
@@ -62,6 +63,7 @@
 
 	 	if($req->execute()){
 	 		echo "<div class='alert alert-success'>Post creado correctamente.</div>";
+	 		//Si se ejecuta la funcion ejecutamos la subida de la imagen mediante otro metodo
 	 		Post::uploadPhoto($image);
             return true;
         }else{
@@ -69,6 +71,7 @@
             return false;
         }
 	}
+	//funcion para modificar posts de la BBDD, el formulario modificarpost llega aqui donde los nuevos parametros se guardan en variables y se actualizan en la BBDD.
 	public static function modificarBD(){
 
 		$db = Db::getInstance();
@@ -82,7 +85,7 @@
 	 	$image=htmlspecialchars(strip_tags($_FILES["image"]["name"]));
 	 	$id=htmlspecialchars(strip_tags($_POST['id']));
 	 	
-	 	
+	 	//en el caso de que la imagen no haya sido modificada cogeremos la imagen antigua y mantendremos su nombre.
         if ($_FILES["image"]["name"] == "") {
         	$image = $_POST['image1'];
         }
@@ -105,6 +108,7 @@
         }
 
 	}
+	//funcion que permite eleminar un post de la BBDD.
 	public static function eliminarBD($id){
 		
 		$db = Db::getInstance();
@@ -120,7 +124,7 @@
         }
 
 	}
-
+	//metodod que permite crear una carpeta upload si no esta creada, donde alli alamcenara las imagenes que suba el usuario.
 	public static function uploadPhoto($image){
  
 		    $result_message="";

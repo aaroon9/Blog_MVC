@@ -5,7 +5,9 @@
 		 </head>
 		 <body>
 			 <header>
+			 	<!--Declaracion de un navbar para dar formato-->
 			 	<nav class="navbar navbar-dark bg-dark">
+			 		<!--Declaracion de redireccion de URL amigable-->
 					 <a class="navbar-brand" href="<?php echo constant('URL'); ?>">Home</a>
 					 <a class="navbar-brand" href="<?php echo constant('URL'); ?>posts/index">Posts</a>
 					 <a class="navbar-brand" href="<?php echo constant('URL'); ?>posts/mostrarInsertar">Crear Post</a>

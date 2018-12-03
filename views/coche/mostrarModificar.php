@@ -1,10 +1,14 @@
 
+
+<!--Declaracion de un formulario para modificar un coche, con su redireccion mediante URL amigable-->
+
 <form action="<?php echo constant('URL'); ?>coches/modificarCocheBD" method="post" enctype="multipart/form-data"> 
     <table class='table table-hover table-responsive table-bordered'>
  
         <tr>
             <td>Bastidor:</td>
             <td><?php echo $coche->bastidor; ?></td>
+            <!--campo hidden para tener como referencia este coche-->
             <input type="hidden" name="bastidor" value="<?php echo $coche->bastidor; ?>"/>
         </tr>
         <tr>
@@ -21,6 +25,7 @@
 
             <td>Puertas Actuales:</td>
             <td><?php echo $coche->puertas; ?></td>
+                <!--campo hidden por si el dato no se modifica-->
                 <input type="hidden" name="puertas" value="<?php echo $coche->puertas; ?>" class='form-control'/>
         </tr>
         <tr>

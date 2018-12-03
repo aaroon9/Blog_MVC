@@ -1,5 +1,6 @@
 
 
+<!--Declaracion de tabla para la vista unica de un solo elemento de la tabla coches-->
 <table class="table">
 	<tr>
 		<th></th>
